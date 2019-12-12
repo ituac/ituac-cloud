@@ -6,3 +6,4 @@
 !aaaaAAA.class # 但 aaaaAAA.class 除外
 /.config       # 忽略项目根目录下的 .config 文件，不包括 otherDir/.config
 target/        # 忽略 target/ 目录下的所有文件
+.DS_Store
