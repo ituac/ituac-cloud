@@ -6,10 +6,27 @@
 
     <groupId>org.ituac</groupId>
     <artifactId>ituac-cloud</artifactId>
+    <name>ituac-cloud</name>
+    <description>Spring Cloud Ituac</description>
     <version>1.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>https://ituac.com</url>
 
 
-    <!-- commons -->
+    <developers>
+        <developer>
+            <id>org.ituac</id>
+            <name>ituac</name>
+            <email>ituac@qq.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>ituac-cloud-dependencies</module>
+        <module>ituac-cloud-discovery</module>
+        <module>ituac-cloud-config</module>
+        <module>ituac-cloud-ops</module>
+    </modules>
 
 
 </project>
