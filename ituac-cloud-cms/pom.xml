@@ -12,17 +12,27 @@
         <relativePath>../ituac-cloud-dependencies</relativePath>
     </parent>
 
-    <artifactId>ituac-cloud-ops</artifactId>
-    <groupId>org.ituac</groupId>
+    <artifactId>ituac-cloud-cms</artifactId>
+    <groupId>org.ituac.cms</groupId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>运维</description>
+    <description>内容服务系统</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-cms</artifactId>
+        </dependency>
+    </dependencies>
 
     <modules>
-        <module>ituac-ops-monitor</module>
+        <module>ituac-cms-admin-server</module>
+        <module>ituac-cms-service</module>
+        <module>ituac-cms-mapper</module>
     </modules>
+
 
 
 </project>

@@ -1,0 +1,41 @@
+#server:
+#  port: 8080
+#
+#  #开启端点
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  security:
+#    enabled: false
+#
+#
+#spring:
+#  cloud:
+#    gateway:
+#      enabled: true
+#      forwarded:
+#        enabled: true
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#      routes:
+#        - id: cms
+#          #uri: https://jd.com/
+#          uri: http://localhost:8082
+#          predicates:
+#            #- Path=/cms/echo/feign/info/{path}
+#            - Path=/**
+#            #filters:
+#            #- AddRequestParameter=foo, bar
+#            #- SetPath=/cms/{path}
+#            #- RewritePath=/cms111, /cms/echo/feign/info/111
+#            #- PrefixPath=/cms
+#            #- AddRequestHeader=X-Request-Foo, Bar
+#            #- AddResponseHeader=X-Response-Foo, Bar
+#
+#
+#
+#

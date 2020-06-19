@@ -6,13 +6,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.ituac</groupId>
-        <artifactId>ituac-cloud-dependencies</artifactId>
+        <groupId>org.ituac.upms</groupId>
+        <artifactId>ituac-cloud-upms</artifactId>
         <version>1.0.1-SNAPSHOT</version>
-        <relativePath>../ituac-cloud-dependencies</relativePath>
     </parent>
 
-    <artifactId>ituac-cloud-discovery</artifactId>
+    <artifactId>ituac-upms-admin-server</artifactId>
+    <groupId>org.ituac.upms</groupId>
+    <packaging>jar</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <url>https://ituac.com</url>
+    <name>${project.artifactId}</name>
+    <description>内容服务管理系统</description>
+
 
     <dependencies>
         <dependency>
@@ -29,16 +35,18 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- zipkin -->
+        <!-- dubbo -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
-        </dependency>-->
+        <!-- sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
     </dependencies>
+
+
 
 </project>

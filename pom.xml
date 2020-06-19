@@ -26,6 +26,11 @@
         <module>ituac-cloud-discovery</module>
         <module>ituac-cloud-config</module>
         <module>ituac-cloud-ops</module>
+        <module>ituac-cloud-cms</module>
+        <module>ituac-cloud-upms</module>
+        <module>ituac-cloud-api</module>
+        <module>ituac-cloud-gateway</module>
+        <module>ituac-cloud-auth</module>
     </modules>
 
 

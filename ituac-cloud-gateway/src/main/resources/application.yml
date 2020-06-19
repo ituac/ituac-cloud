@@ -1,0 +1,23 @@
+server:
+  port: 8091
+
+#spring:
+#  cloud:
+#    gateway:
+#      enabled: true
+#      forwarded:
+#        enabled: true
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#      routes:
+#        - id: cms
+#          uri: http://localhost:8082
+#          predicates:
+#            - Path=/cmsapi/*
+#            - name: RequestMethods
+#              args:
+#                methods: Get,Post
+#          filters:
+#            - Auth=name,token

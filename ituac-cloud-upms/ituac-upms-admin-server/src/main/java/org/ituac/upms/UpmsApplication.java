@@ -1,21 +1,21 @@
-package org.ituac;
+package org.ituac.upms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import zipkin.server.EnableZipkinServer;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author ituac
  */
 
-@SpringBootApplication
 @EnableDiscoveryClient
-@EnableZipkinServer
-public class ZipkinApplication {
+@EnableFeignClients("org.ituac.api")
+@SpringBootApplication(scanBasePackages = {"org.ituac","org.ituac.api.dubbo"})
+public class UpmsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZipkinApplication.class, args);
+        SpringApplication.run(UpmsApplication.class, args);
     }
 
 }

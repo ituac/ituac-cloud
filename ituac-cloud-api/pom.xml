@@ -12,16 +12,28 @@
         <relativePath>../ituac-cloud-dependencies</relativePath>
     </parent>
 
-    <artifactId>ituac-cloud-ops</artifactId>
-    <groupId>org.ituac</groupId>
+    <artifactId>ituac-cloud-api</artifactId>
+    <groupId>org.ituac.api</groupId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>运维</description>
+    <description>api服务系统</description>
+
+    <dependencies>
+        <!--feign 依赖-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
 
     <modules>
-        <module>ituac-ops-monitor</module>
+        <module>ituac-api-cms</module>
     </modules>
 
 
