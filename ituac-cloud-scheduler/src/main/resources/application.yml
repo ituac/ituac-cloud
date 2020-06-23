@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: ituac-cloud-scheduler
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ituac-shop?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+
+elasticjob:
+  serverlists: 127.0.0.1:2181
+  namespace: elastic-job
+
+  orderSimpleJob:
+    cron: 0/3 * * * * ?
+    shardingTotalCount: 3
+    shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+
+  orderDataflowJob:
+    cron: 0/5 * * * * ?
+    shardingTotalCount: 3
+    shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+
