@@ -52,3 +52,8 @@ ituac-cloud
 - jar部署
 - docker部署
 - k8s部署
+
+
+
+### 项目方式
+- 暂时未更新
