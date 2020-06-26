@@ -1,23 +1,10 @@
 spring:
-  application:
-    name: business-oauth2
-  main:
-    allow-bean-definition-overriding: true
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://39.99.35.11:13306/ituac-oauth2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
-    username: root
-    password:
-    hikari:
-      minimum-idle: 5
-      idle-timeout: 600000
-      maximum-pool-size: 10
-      auto-commit: true
-      pool-name: MyHikariCP
-      max-lifetime: 1800000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.16.10.44:3306/spring-cloud-auth2-db?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: dev
+    password: NHdev2015
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

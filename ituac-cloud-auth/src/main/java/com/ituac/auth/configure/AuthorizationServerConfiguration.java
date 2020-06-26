@@ -1,11 +1,13 @@
 package com.ituac.auth.configure;
 
+import com.ituac.auth.service.UserServiceDetail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -15,10 +17,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.store.*;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+
+
 
 import javax.sql.DataSource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author ituac
@@ -34,36 +44,106 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     /**
      * 注入用于支持 password 模式
      */
+    @Autowired
     private AuthenticationManager authenticationManager;
 
 
-    @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource() {
-        // 配置数据源（注意，我使用的是 HikariCP 连接池），以上注解是指定数据源，否则会有冲突
-        return DataSourceBuilder.create().build();
-    }
+    /**
+     * 配置redis连接池
+     */
+    @Autowired
+    RedisConnectionFactory redisConnectionFactory;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    private TokenStore tokenStore;
+
+    @Autowired
+    private UserServiceDetail userServiceDetail;
+
+    @Autowired
+    private ClientDetailsService clientDetailsService;
+
+    static final Logger logger = LoggerFactory.getLogger(AuthorizationServerConfiguration.class);
+
+    /*@Bean
+    public TokenStore tokenStore() {
+        return new JdbcTokenStore(dataSource);
+    }*/
 
     @Bean
     public TokenStore tokenStore() {
-        // 基于 JDBC 实现，令牌保存到数据库
-        return new JdbcTokenStore(dataSource());
-        //return new RedisTokenStore(redisConnectionFactory);
+        return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
     @Bean
-    public ClientDetailsService jdbcClientDetailsService() {
-        // 基于 JDBC 实现，需要事先在数据库配置客户端信息
-        return new JdbcClientDetailsService(dataSource());
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("test-jwt.jks"), "test123".toCharArray());
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("test-jwt"));
+        return converter;
     }
+
+    @Bean // 声明 ClientDetails实现
+    public ClientDetailsService clientDetailsService() {
+        return new JdbcClientDetailsService(dataSource);
+    }
+
+
+
+
+    /**
+     * 配置客户端:客户端详情信息在这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息
+     * @param clients
+     * @throws Exception
+     */
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+        // 简单实现
+        /*String finalSecret = "{bcrypt}" + new BCryptPasswordEncoder().encode("123456");
+        // 客户端配置
+        // 配置两个客户端，一个用于password认证一个用于client认证
+        clients.inMemory().withClient("client_1")
+                .resourceIds(Utils.RESOURCEIDS.ORDER)
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("select")
+                .authorities("oauth2")
+                .secret(finalSecret)
+                .and().withClient("client_2")
+                .resourceIds(Utils.RESOURCEIDS.ORDER)
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("server")
+                .authorities("oauth2")
+                .secret(finalSecret);*/
+
+        // 数据库实现
+        clients.withClientDetails(clientDetailsService);
+    }
+
+
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints
-                // 用于支持密码模式
+
+        /*endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore());
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);*/
+
+        // 存数据库
+        endpoints.tokenStore(tokenStore).authenticationManager(authenticationManager)
+                .userDetailsService(userServiceDetail);
+
+        // 配置tokenServices参数
+        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setTokenStore(endpoints.getTokenStore());
+        tokenServices.setSupportRefreshToken(false);
+        tokenServices.setClientDetailsService(endpoints.getClientDetailsService());
+        tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
+        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30)); // 30天
+        endpoints.tokenServices(tokenServices);
     }
 
     @Override
@@ -71,19 +151,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         security
                 // 允许客户端访问 /oauth/check_token 检查 token
                 .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients();
+                .allowFormAuthenticationForClients()
+                .tokenKeyAccess("permitAll()");
     }
 
-    /**
-     * 配置客户端
-     *
-     * @param clients
-     * @throws Exception
-     */
-    @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // 客户端配置
-        clients.withClientDetails(jdbcClientDetailsService());
-    }
+
 
 }
