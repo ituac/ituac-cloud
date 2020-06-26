@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //配置protected访问控制，必须认证过后才可以访问
-                .antMatchers("/uaa/oauth/**","/oauth/**","/user/registry/**", "/user/login/**").permitAll()
+                .antMatchers("/uaa/oauth/**","/oauth/**","/upms/users/registry/**", "/upms/users/login/**").permitAll()
                 .antMatchers("/**").authenticated();
     }
 }

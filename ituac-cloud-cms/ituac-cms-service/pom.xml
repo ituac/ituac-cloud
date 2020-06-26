@@ -21,12 +21,13 @@
 
 
     <dependencies>
-        <!-- dubbo -->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-dubbo</artifactId>
+            <groupId>org.ituac.cms</groupId>
+            <artifactId>ituac-cms-mapper</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
+
 
 
 </project>

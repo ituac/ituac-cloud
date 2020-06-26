@@ -17,6 +17,12 @@ zuul:
       sensitiveHeaders:
       serviceId: ituac-cloud-auth
       #strip-prefix: false
+    upms:
+      #说明: path不是微服务的地址而是自己定义的地址如果微服务地址为 /api/product 则此处访问地址为: /product/api/product
+      path: /upms/**
+      sensitiveHeaders:
+      serviceId: ituac-upms-admin-server
+      #strip-prefix: false
 
   
   include-debug-header: true

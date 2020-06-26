@@ -6,18 +6,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.ituac.cms</groupId>
-        <artifactId>ituac-cloud-cms</artifactId>
+        <artifactId>ituac-cloud-atlas</artifactId>
+        <groupId>org.ituac.atlas</groupId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ituac-cms-mapper</artifactId>
-    <groupId>org.ituac.cms</groupId>
+    <groupId>org.ituac.atlas</groupId>
+    <artifactId>ituac-atlas-mapper</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>内容服务管理系统</description>
+    <description>知识图谱服务管理系统</description>
 
 
     <dependencies>

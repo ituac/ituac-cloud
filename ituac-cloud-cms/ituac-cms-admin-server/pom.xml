@@ -45,10 +45,12 @@
         <dependency>
             <groupId>org.ituac.cms</groupId>
             <artifactId>ituac-cms-service</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.ituac.cms</groupId>
             <artifactId>ituac-cms-mapper</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

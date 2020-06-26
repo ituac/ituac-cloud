@@ -50,7 +50,7 @@ public class AccessFilter extends ZuulFilter {
         // 如果是登录请求不进行过滤
         if (request.getRequestURI().contains("/oauth")
                 || request.getRequestURI().contains("/login")
-                || request.getRequestURI().contains("/logout")) {
+                || request.getRequestURI().contains("/registry")) {
             flag = true;
             logger.warn("网关登陆|鉴权｜退出,判断结果：{}不需要执行zuul拦截",flag);
         }

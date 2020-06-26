@@ -32,6 +32,7 @@
         <module>ituac-cloud-gateway</module>
         <module>ituac-cloud-auth</module>
         <module>ituac-cloud-scheduler</module>
+        <module>ituac-cloud-atlas</module>
     </modules>
 
 

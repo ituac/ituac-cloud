@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.ituac.cms</groupId>
-        <artifactId>ituac-cloud-cms</artifactId>
+        <artifactId>ituac-cloud-upms</artifactId>
+        <groupId>org.ituac.upms</groupId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ituac-cms-mapper</artifactId>
-    <groupId>org.ituac.cms</groupId>
+    <groupId>org.ituac.upms</groupId>
+    <artifactId>ituac-upms-mapper</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <url>https://ituac.com</url>

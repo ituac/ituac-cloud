@@ -6,22 +6,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.ituac.cms</groupId>
-        <artifactId>ituac-cloud-cms</artifactId>
+        <groupId>org.ituac.upms</groupId>
+        <artifactId>ituac-cloud-upms</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ituac-cms-mapper</artifactId>
-    <groupId>org.ituac.cms</groupId>
+    <artifactId>ituac-upms-service</artifactId>
+    <groupId>org.ituac.upms</groupId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>内容服务管理系统</description>
+    <description>用户服务管理系统</description>
 
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.ituac.upms</groupId>
+            <artifactId>ituac-upms-mapper</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

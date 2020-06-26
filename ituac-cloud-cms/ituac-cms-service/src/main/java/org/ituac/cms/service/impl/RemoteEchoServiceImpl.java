@@ -1,7 +1,7 @@
 package org.ituac.cms.service.impl;
 
 import org.apache.dubbo.config.annotation.Service;
-import org.ituac.api.dubbo.RemoteEchoServiceDubbo;
+import org.ituac.api.cms.dubbo.RemoteEchoServiceDubbo;
 
 
 @Service

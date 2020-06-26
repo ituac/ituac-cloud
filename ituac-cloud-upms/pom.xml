@@ -21,14 +21,27 @@
     <description>用户服务系统</description>
 
     <dependencies>
+        <!-- cms内容管理 -->
         <dependency>
             <groupId>org.ituac.api</groupId>
             <artifactId>ituac-api-cms</artifactId>
+        </dependency>
+        <!-- upms用户中心 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-upms</artifactId>
+        </dependency>
+        <!-- 知识图谱 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-atlas</artifactId>
         </dependency>
     </dependencies>
 
     <modules>
         <module>ituac-upms-admin-server</module>
+        <module>ituac-upms-service</module>
+        <module>ituac-upms-mapper</module>
     </modules>
 
 </project>

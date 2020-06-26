@@ -12,31 +12,36 @@
         <relativePath>../ituac-cloud-dependencies</relativePath>
     </parent>
 
-    <artifactId>ituac-cloud-api</artifactId>
-    <groupId>org.ituac.api</groupId>
+    <artifactId>ituac-cloud-atlas</artifactId>
+    <groupId>org.ituac.atlas</groupId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>api服务系统</description>
+    <description>知识图谱服务系统</description>
 
     <dependencies>
-        <!--feign 依赖-->
+        <!-- cms内容管理 -->
         <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-cms</artifactId>
         </dependency>
+        <!-- upms用户中心 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-upms</artifactId>
+        </dependency>
+        <!-- 知识图谱 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-atlas</artifactId>
         </dependency>
     </dependencies>
 
     <modules>
-        <module>ituac-api-cms</module>
-        <module>ituac-api-upms</module>
-        <module>ituac-api-atlas</module>
+        <module>ituac-atlas-admin-server</module>
+        <module>ituac-atlas-service</module>
+        <module>ituac-atlas-mapper</module>
     </modules>
-
 
 </project>

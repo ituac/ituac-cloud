@@ -108,6 +108,8 @@
         <cms.mapper.version>1.0.0</cms.mapper.version>
         <api.cms.version>1.0.0</api.cms.version>
         <api.upms.version>1.0.0</api.upms.version>
+        <api.atlas.version>1.0.0</api.atlas.version>
+        <api.upms.version>1.0.0</api.upms.version>
     </properties>
 
     <dependencies>
@@ -163,51 +165,6 @@
                 <version>${spring.boot.admin.version}</version>
             </dependency>
 
-            <!--<dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>2.2.1.RELEASE</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-tomcat</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>-->
-
-            <!--gateway 网关依赖,内置webflux 依赖-->
-            <!--<dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-gateway</artifactId>
-                <version>2.2.0.RELEASE</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-web</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-webmvc</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework.bootk</groupId>
-                        <artifactId>spring-boot-starter-tomcat</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                        <artifactId>tomcat-embed-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                        <artifactId>tomcat-embed-el</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                        <artifactId>tomcat-embed-websocket</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>-->
-
             <!-- service -->
             <dependency>
                 <groupId>org.ituac.cms</groupId>
@@ -223,6 +180,16 @@
                 <groupId>org.ituac.api</groupId>
                 <artifactId>ituac-api-cms</artifactId>
                 <version>${api.cms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.api</groupId>
+                <artifactId>ituac-api-upms</artifactId>
+                <version>${api.upms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.api</groupId>
+                <artifactId>ituac-api-atlas</artifactId>
+                <version>${api.atlas.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -241,18 +208,6 @@
         </resources>
         <pluginManagement>
             <plugins>
-                <!--                <plugin>-->
-                <!--                    <groupId>org.springframework.boot</groupId>-->
-                <!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <goals>-->
-                <!--                                <goal>repackage</goal>-->
-                <!--                                <goal>build-info</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
