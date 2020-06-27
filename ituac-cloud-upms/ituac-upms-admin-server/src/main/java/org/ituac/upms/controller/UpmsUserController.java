@@ -1,6 +1,7 @@
 package org.ituac.upms.controller;
 
 import org.apache.commons.lang.StringUtils;
+import org.ituac.api.upms.model.common.Value;
 import org.ituac.api.upms.model.entity.SysUsers;
 import org.ituac.upms.mapper.UpmsUserMapper;
 import org.ituac.api.upms.model.dto.UserLoginParamDto;
@@ -60,7 +61,7 @@ public class UpmsUserController {
      * @throws Exception
      */
     @RequestMapping("/login")
-    public ResponseEntity<?> login(@Valid UserLoginParamDto loginDto, BindingResult bindingResult) throws Exception {
+    public ResponseEntity<Value> login(@Valid UserLoginParamDto loginDto, BindingResult bindingResult) throws Exception {
 
         if (bindingResult.hasErrors())
             throw new Exception("登录信息错误，请确认后再试");
@@ -77,8 +78,6 @@ public class UpmsUserController {
             throw new Exception("用户已经锁定");
         }
 
-
-
         String client_secret = oAuth2ClientProperties.getClientId()+":"+oAuth2ClientProperties.getClientSecret();
 
         client_secret = "Basic "+ Base64.getEncoder().encodeToString(client_secret.getBytes());
@@ -92,10 +91,14 @@ public class UpmsUserController {
         map.put("grant_type", Collections.singletonList(oAuth2ProtectedResourceDetails.getGrantType()));
 
         map.put("scope", oAuth2ProtectedResourceDetails.getScope());
+
+        //登录成功 修改用户登录状态
+        upmsUserService.updateLoginStatusWithOnLine(user);
+
         //HttpEntity
         HttpEntity httpEntity = new HttpEntity(map,httpHeaders);
         //获取 Token
-        return restTemplate.exchange(oAuth2ProtectedResourceDetails.getAccessTokenUri(), HttpMethod.POST,httpEntity,OAuth2AccessToken.class);
+        return ResponseEntity.ok(Value.getSuccess(restTemplate.exchange(oAuth2ProtectedResourceDetails.getAccessTokenUri(), HttpMethod.POST,httpEntity,OAuth2AccessToken.class)));
 
     }
 
@@ -107,14 +110,18 @@ public class UpmsUserController {
      * @return
      */
     @RequestMapping(value = "/registry", method = RequestMethod.POST)
-    public ResponseEntity<SysUsers> createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public ResponseEntity<Value> createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
         SysUsers user = new SysUsers();
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
             logger.info("info:username:{} === password{}",username,password);
-            upmsUserService.create(username,password);
-            user.setUsername(username);
+            SysUsers users = userRepository.findByUsername(username);
+            if(users == null){
+                user = upmsUserService.create(username,password);
+            }else{
+                return ResponseEntity.ok(Value.getFailure("该用户已存在"));
+            }
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(Value.getSuccess(user));
     }
 
     /**
@@ -123,13 +130,12 @@ public class UpmsUserController {
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public SysUsers logout(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public ResponseEntity<Value> logout(@RequestParam("username") String username, @RequestParam("password") String password) {
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
             logger.info("info:username:{} === password{}",username,password);
-            upmsUserService.create(username,password);
+            upmsUserService.logintOut(username);
         }
-
-        return null;
+        return ResponseEntity.ok(Value.getSuccess("成功退出登录"));
     }
 
 }
