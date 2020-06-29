@@ -124,10 +124,6 @@ public class UpmsUserController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public SysUsers logout(@RequestParam("username") String username, @RequestParam("password") String password) {
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
-            logger.info("info:username:{} === password{}",username,password);
-            upmsUserService.create(username,password);
-        }
 
         return null;
     }
