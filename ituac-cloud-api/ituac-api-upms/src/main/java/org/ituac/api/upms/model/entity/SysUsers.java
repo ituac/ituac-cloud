@@ -1,6 +1,6 @@
 package org.ituac.api.upms.model.entity;
 
-import lombok.extern.apachecommons.CommonsLog;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+@Data
 @Entity(name = "sys_users")
 public class SysUsers implements UserDetails, Serializable {
 
@@ -30,6 +31,9 @@ public class SysUsers implements UserDetails, Serializable {
 
     @Column
     private String email;
+
+    @Column
+    private int loginStatus;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "sys_user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
@@ -91,4 +95,5 @@ public class SysUsers implements UserDetails, Serializable {
     public boolean isEnabled() {
         return true;
     }
+
 }
