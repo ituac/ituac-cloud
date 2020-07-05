@@ -21,10 +21,6 @@
     <description>内容服务系统</description>
 
     <dependencies>
-        <dependency>
-            <groupId>org.ituac.api</groupId>
-            <artifactId>ituac-api-cms</artifactId>
-        </dependency>
         <!-- cms内容管理 -->
         <dependency>
             <groupId>org.ituac.api</groupId>

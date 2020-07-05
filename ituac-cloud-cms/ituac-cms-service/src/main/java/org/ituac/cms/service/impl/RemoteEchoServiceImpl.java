@@ -1,10 +1,10 @@
 package org.ituac.cms.service.impl;
 
-import org.apache.dubbo.config.annotation.Service;
+//import org.apache.dubbo.config.annotation.Service;
 import org.ituac.api.cms.dubbo.RemoteEchoServiceDubbo;
 
 
-@Service
+//@Service
 public class RemoteEchoServiceImpl implements RemoteEchoServiceDubbo {
 
     @Override

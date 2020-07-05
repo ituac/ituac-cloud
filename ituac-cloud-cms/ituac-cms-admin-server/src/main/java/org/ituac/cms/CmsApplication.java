@@ -1,6 +1,6 @@
 package org.ituac.cms;
 
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+//import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @EnableDiscoveryClient
-@EnableDubbo(scanBasePackages = "org.ituac.cms.service.impl")
+//@EnableDubbo(scanBasePackages = "org.ituac.cms.service.impl")
 @EnableFeignClients("org.ituac.api")
 @ComponentScan(basePackages = {"org.ituac.*"})  //指定扫描包路径
 @SpringBootApplication

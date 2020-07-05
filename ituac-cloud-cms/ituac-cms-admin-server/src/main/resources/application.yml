@@ -2,7 +2,7 @@
 #  port: 3000
 #
 #
-#spring:
+spring:
 #  redis:
 #    host: 122.51.39.181
 #    database: 0
@@ -11,12 +11,12 @@
 #    jackson:
 #      time-zone: GMT+8
 #      date-format: yyyy-MM-dd HH:mm:ss
-#    datasource:
+    datasource:
 #      type: com.zaxxer.hikari.HikariDataSource
-#      driver-class-name: com.mysql.cj.jdbc.Driver
-#      url: jdbc:mysql://122.51.39.181:3306/ituac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
-#      username: root
-#      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://122.51.39.181:3306/ituac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+      username: root
+      password: 123456
 #      hikari:
 #        minimum-idle: 5
 #        idle-timeout: 600000
