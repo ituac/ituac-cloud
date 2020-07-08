@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    org.ituac.common.security.service.ItuacUserDetailsServiceImpl,\
+    org.ituac.common.security.component.ItuacSecurityInnerAspect

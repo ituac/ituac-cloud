@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    org.ituac.common.log.config.LogAutoConfiguration
+org.springframework.context.ApplicationContextInitializer=\
+    org.ituac.common.log.ApplicationLoggerInitializer

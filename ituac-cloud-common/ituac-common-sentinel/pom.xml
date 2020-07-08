@@ -11,21 +11,29 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ituac-common-swagger</artifactId>
+    <artifactId>ituac-common-sentinel</artifactId>
     <groupId>org.ituac.common</groupId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>ituac接口文档</description>
+    <description>Sentinel服务降级熔断、限流组件</description>
 
 
     <dependencies>
-        <!--swagger 依赖-->
+        <!--工具内核包-->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.fox.version}</version>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-kern</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!--feign 依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
 
