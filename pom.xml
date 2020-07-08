@@ -33,6 +33,7 @@
         <module>ituac-cloud-auth</module>
         <module>ituac-cloud-scheduler</module>
         <module>ituac-cloud-atlas</module>
+        <module>ituac-cloud-common</module>
     </modules>
 
 

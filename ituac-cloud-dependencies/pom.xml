@@ -76,8 +76,7 @@
         <spring-cloud-stream.version>Horsham.RELEASE</spring-cloud-stream.version>
         <spring-cloud-consul.version>2.2.0.RELEASE</spring-cloud-consul.version>
         <spring-cloud-config.version>2.2.0.RELEASE</spring-cloud-config.version>
-        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-        <alibaba-cloud.version>2.2.0.RELEASE</alibaba-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring.boot.admin.version>2.2.0</spring.boot.admin.version>
 
         <!-- Apache Dubbo -->
@@ -103,6 +102,15 @@
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <fastjson.version>1.2.54</fastjson.version>
 
+        <swagger.fox.version>2.9.2</swagger.fox.version>
+        <swagger.core.version>1.5.24</swagger.core.version>
+
+        <hutool.version>5.3.8</hutool.version>
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+
+        <!-- common -->
+        <common.kern.version>1.0.1</common.kern.version>
+
         <!-- service -->
         <cms.service.version>1.0.0</cms.service.version>
         <cms.mapper.version>1.0.0</cms.mapper.version>
@@ -110,6 +118,18 @@
         <api.upms.version>1.0.0</api.upms.version>
         <api.atlas.version>1.0.0</api.atlas.version>
         <api.upms.version>1.0.0</api.upms.version>
+
+
+
+
+        <!-- Docker -->
+        <docker.plugin.version>0.32.0</docker.plugin.version>
+        <docker.host>http://172.17.0.111:2375</docker.host>
+        <docker.registry>172.17.0.111</docker.registry>
+        <docker.namespace>library</docker.namespace>
+        <docker.username>admin</docker.username>
+        <docker.password>Harbor12345</docker.password>
+
     </properties>
 
     <dependencies>
@@ -152,10 +172,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--spring cloud alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.1.1.RELEASE</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -165,7 +186,48 @@
                 <version>${spring.boot.admin.version}</version>
             </dependency>
 
-            <!-- service -->
+
+            <!--tools-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.7</version>
+            </dependency>
+
+            <!-- common -->
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-kern</artifactId>
+                <version>${common.kern.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-security</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-log</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-swagger</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-mybatis</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.common</groupId>
+                <artifactId>ituac-common-sentinel</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+
+            <!-- API Service -->
             <dependency>
                 <groupId>org.ituac.cms</groupId>
                 <artifactId>ituac-cms-service</artifactId>
@@ -191,6 +253,40 @@
                 <artifactId>ituac-api-atlas</artifactId>
                 <version>${api.atlas.version}</version>
             </dependency>
+
+            <!-- Service -->
+            <dependency>
+                <groupId>org.ituac.upms</groupId>
+                <artifactId>ituac-upms-service</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ituac.upms</groupId>
+                <artifactId>ituac-upms-mapper</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+
+
+            <!--swagger 最新依赖内置版本-->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+
+            <!--mybatis-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -1,43 +1,53 @@
 package org.ituac.api.upms.model.entity;
 
 
-import org.springframework.security.core.GrantedAuthority;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
-import javax.persistence.*;
+/**
+ * 角色表
+ * @author boo
+ */
 
-@Entity(name = "sys_role")
-public class SysRole implements GrantedAuthority {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class SysRole extends Model<SysRole> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false)
-    private String name;
+    @TableId(value = "role_id", type = IdType.AUTO)
+    @ApiModelProperty(value = "角色编号")
+    private Integer roleId;
 
-    public Long getId() {
-        return id;
-    }
+    @NotBlank(message = "角色名称 不能为空")
+    @ApiModelProperty(value = "角色名称")
+    private String roleName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotBlank(message = "角色标识 不能为空")
+    @ApiModelProperty(value = "角色标识")
+    private String roleCode;
 
+    @NotBlank(message = "角色描述 不能为空")
+    @ApiModelProperty(value = "角色描述")
+    private String roleDesc;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @ApiModelProperty(value = "创建时间")
+    private LocalDateTime createTime;
 
-    @Override
-    public String getAuthority() {
-        return name;
-    }
+    @ApiModelProperty(value = "修改时间")
+    private LocalDateTime updateTime;
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+    /**
+     * 删除标识（0-正常,1-删除）
+     */
+    @TableLogic
+    private String delFlag;
+
 }

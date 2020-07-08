@@ -21,6 +21,12 @@
     <description>api服务系统</description>
 
     <dependencies>
+        <!--工具内核包-->
+        <dependency>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-kern</artifactId>
+        </dependency>
+
         <!--feign 依赖-->
         <dependency>
             <groupId>io.github.openfeign</groupId>
@@ -30,6 +36,14 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
+        <!--序列化-->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-serialization-kryo</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
     </dependencies>
 
     <modules>

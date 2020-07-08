@@ -21,9 +21,27 @@
 
 
     <dependencies>
+        <!-- cms内容管理 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-cms</artifactId>
+        </dependency>
+        <!-- upms用户中心 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-upms</artifactId>
+        </dependency>
+        <!-- 知识图谱 -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-atlas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-mybatis</artifactId>
+        </dependency>
 
     </dependencies>
-
 
 
 </project>

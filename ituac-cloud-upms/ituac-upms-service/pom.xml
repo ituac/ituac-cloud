@@ -24,10 +24,24 @@
         <dependency>
             <groupId>org.ituac.upms</groupId>
             <artifactId>ituac-upms-mapper</artifactId>
-            <version>1.0.0</version>
         </dependency>
+        <!-- log -->
+        <dependency>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-log</artifactId>
+        </dependency>
+        <!--sentile-->
+        <dependency>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-sentinel</artifactId>
+        </dependency>
+        <!-- secutiry -->
+        <dependency>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-security</artifactId>
+        </dependency>
+
+
     </dependencies>
-
-
 
 </project>

@@ -27,14 +27,10 @@
             <artifactId>ituac-common-kern</artifactId>
         </dependency>
         <!-- Spring Cloud oauth2 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!--feign 依赖-->
+        <!-- Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
     </dependencies>
 

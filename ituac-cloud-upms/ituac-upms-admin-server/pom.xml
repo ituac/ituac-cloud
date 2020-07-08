@@ -35,33 +35,24 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- dubbo -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-dubbo</artifactId>-->
-<!--        </dependency>-->
-        <!-- sentinel-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
 
         <!-- service -->
         <dependency>
             <groupId>org.ituac.upms</groupId>
             <artifactId>ituac-upms-service</artifactId>
-            <version>1.0.0</version>
         </dependency>
+
         <dependency>
-            <groupId>org.ituac.upms</groupId>
-            <artifactId>ituac-upms-mapper</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-swagger</artifactId>
         </dependency>
+
+        <!-- dubbo -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-dubbo</artifactId>-->
+        <!--        </dependency>-->
+        <!-- sentinel-->
     </dependencies>
 
 
