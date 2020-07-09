@@ -47,8 +47,8 @@ public class UpmsUserController {
     @Autowired
     private UpmsUserService upmsUserService;
 
-    @Autowired
-    private UpmsUserMapper userRepository;
+    //@Autowired
+    //private UpmsUserMapper userRepository;
 
     @Autowired
     private OAuth2ClientProperties oAuth2ClientProperties;
@@ -76,8 +76,8 @@ public class UpmsUserController {
 
         if (bindingResult.hasErrors())
             throw new Exception("登录信息错误，请确认后再试");
-
-        SysUsers user = userRepository.findByUsername(loginDto.getUsername());
+        SysUsers user = null;
+        //user = userRepository.findByUsername(loginDto.getUsername());
 
         if (null == user)
             throw new Exception("用户为空，出错了");
@@ -125,7 +125,8 @@ public class UpmsUserController {
         SysUsers user = new SysUsers();
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
             logger.info("info:username:{} === password{}",username,password);
-            SysUsers users = userRepository.findByUsername(username);
+            SysUsers users = null;
+            //SysUsers users = userRepository.findByUsername(username);
             if(users == null){
                 user = upmsUserService.create(username,password);
             }else{
