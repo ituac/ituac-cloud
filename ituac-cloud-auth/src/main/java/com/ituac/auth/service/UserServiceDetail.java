@@ -1,3 +1,4 @@
+/*
 package com.ituac.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,3 +20,4 @@ public class UserServiceDetail implements UserDetailsService {
 
 
 }
+*/

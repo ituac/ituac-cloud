@@ -21,7 +21,7 @@ import org.springframework.web.client.RestTemplate;
  */
 
 @Slf4j
-public class PigResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
+public class ItuacResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
 
     @Autowired
     protected ResourceAuthExceptionEntryPoint resourceAuthExceptionEntryPoint;
@@ -30,7 +30,7 @@ public class PigResourceServerConfigurerAdapter extends ResourceServerConfigurer
     protected RemoteTokenServices remoteTokenServices;
 
     @Autowired
-    private AccessDeniedHandler pigAccessDeniedHandler;
+    private AccessDeniedHandler ituacAccessDeniedHandler;
 
     @Autowired
     private PermitAllUrlProperties permitAllUrl;
@@ -65,7 +65,7 @@ public class PigResourceServerConfigurerAdapter extends ResourceServerConfigurer
         remoteTokenServices.setRestTemplate(lbRestTemplate);
         remoteTokenServices.setAccessTokenConverter(accessTokenConverter);
         resources.authenticationEntryPoint(resourceAuthExceptionEntryPoint).tokenExtractor(ituacBearerTokenExtractor)
-                .accessDeniedHandler(pigAccessDeniedHandler).tokenServices(remoteTokenServices);
+                .accessDeniedHandler(ituacAccessDeniedHandler).tokenServices(remoteTokenServices);
     }
 
 }

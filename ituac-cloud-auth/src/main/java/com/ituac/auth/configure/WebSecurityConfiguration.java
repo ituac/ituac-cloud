@@ -1,3 +1,4 @@
+/*
 package com.ituac.auth.configure;
 
 import com.ituac.auth.service.UserServiceDetail;
@@ -16,9 +17,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+*/
 /**
  * @author ituac
- */
+ *//*
+
 
 
 @Configuration
@@ -69,3 +72,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 }
 
+*/

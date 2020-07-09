@@ -26,7 +26,7 @@ public class ItuacSecurityBeanDefinitionRegistrar implements ImportBeanDefinitio
         }
 
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-        beanDefinition.setBeanClass(PigResourceServerConfigurerAdapter.class);
+        beanDefinition.setBeanClass(ItuacResourceServerConfigurerAdapter.class);
         registry.registerBeanDefinition(SecurityConstants.RESOURCE_SERVER_CONFIGURER, beanDefinition);
 
     }

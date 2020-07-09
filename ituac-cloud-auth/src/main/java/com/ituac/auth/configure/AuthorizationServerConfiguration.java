@@ -1,3 +1,4 @@
+/*
 package com.ituac.auth.configure;
 
 import com.ituac.auth.service.UserServiceDetail;
@@ -30,9 +31,11 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 import javax.sql.DataSource;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * @author ituac
- */
+ *//*
+
 
 @Configuration
 @EnableAuthorizationServer
@@ -41,16 +44,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     private BCryptPasswordEncoder passwordEncoder;
 
 
-    /**
+    */
+/**
      * 注入用于支持 password 模式
-     */
+     *//*
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
 
-    /**
+    */
+/**
      * 配置redis连接池
-     */
+     *//*
+
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
 
@@ -68,10 +75,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     static final Logger logger = LoggerFactory.getLogger(AuthorizationServerConfiguration.class);
 
-    /*@Bean
+    */
+/*@Bean
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
-    }*/
+    }*//*
+
 
     @Bean
     public TokenStore tokenStore() {
@@ -94,16 +103,19 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 
 
-    /**
+    */
+/**
      * 配置客户端:客户端详情信息在这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息
      * @param clients
      * @throws Exception
-     */
+     *//*
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         // 简单实现
-        /*String finalSecret = "{bcrypt}" + new BCryptPasswordEncoder().encode("123456");
+        */
+/*String finalSecret = "{bcrypt}" + new BCryptPasswordEncoder().encode("123456");
         // 客户端配置
         // 配置两个客户端，一个用于password认证一个用于client认证
         clients.inMemory().withClient("client_1")
@@ -117,7 +129,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .authorizedGrantTypes("password", "refresh_token")
                 .scopes("server")
                 .authorities("oauth2")
-                .secret(finalSecret);*/
+                .secret(finalSecret);*//*
+
 
         // 数据库实现
         clients.withClientDetails(clientDetailsService);
@@ -128,9 +141,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
-        /*endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
+        */
+/*endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
                 .authenticationManager(authenticationManager)
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);*/
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);*//*
+
 
         // 存数据库
         endpoints.tokenStore(tokenStore).authenticationManager(authenticationManager)
@@ -158,3 +173,4 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 
 }
+*/

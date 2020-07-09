@@ -1,3 +1,4 @@
+/*
 package com.ituac.auth.store;
 
 import org.springframework.data.redis.connection.RedisConnection;
@@ -406,3 +407,4 @@ public class RedisTokenStore implements TokenStore {
         }
     }
 }
+*/

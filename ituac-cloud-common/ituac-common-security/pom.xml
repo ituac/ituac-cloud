@@ -27,10 +27,14 @@
             <artifactId>ituac-common-kern</artifactId>
         </dependency>
         <!-- Spring Cloud oauth2 -->
-        <!-- Spring Cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <!-- umpl-api -->
+        <dependency>
+            <groupId>org.ituac.api</groupId>
+            <artifactId>ituac-api-upms</artifactId>
         </dependency>
     </dependencies>
 

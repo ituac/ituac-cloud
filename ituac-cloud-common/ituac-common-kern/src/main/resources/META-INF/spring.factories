@@ -2,5 +2,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   org.ituac.common.kern.config.JacksonConfiguration,\
   org.ituac.common.kern.config.RedisTemplateConfiguration,\
   org.ituac.common.kern.config.RestTemplateConfiguration,\
-  org.ituac.common.kern.config.util.SpringContextHolder,\
+  org.ituac.common.kern.util.SpringContextHolder,\
   org.ituac.common.kern.config.WebMvcConfiguration

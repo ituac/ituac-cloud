@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ituac
- * @date 20120
+ * @date 2020
  */
 @Slf4j
 @Service
@@ -56,7 +56,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
      */
     public static void clearHolder() {
         if (log.isDebugEnabled()) {
-            log.debug("清除SpringContextHolder中的ApplicationContext:" + applicationContext);
+            log.debug("清理SpringContextHolder中的ApplicationContext:" + applicationContext);
         }
         applicationContext = null;
     }
