@@ -8,17 +8,17 @@ public interface CommonConstants {
     /**
      * 删除
      */
-    String STATUS_DEL = "100";
+    String STATUS_DEL = "1";
 
     /**
      * 正常
      */
-    String STATUS_NORMAL = "200";
+    String STATUS_NORMAL = "0";
 
     /**
      * 锁定
      */
-    String STATUS_LOCK = "300";
+    String STATUS_LOCK = "9";
 
     /**
      * 菜单树根节点
@@ -53,12 +53,12 @@ public interface CommonConstants {
     /**
      * 成功标记
      */
-    Integer SUCCESS = 200;
+    Integer SUCCESS = 0;
 
     /**
      * 失败标记
      */
-    Integer FAIL = -100;
+    Integer FAIL = 1;
 
     /**
      * 验证码前缀

@@ -64,13 +64,15 @@ public class UpmsUserController {
         return new RestTemplate();
     }
 
+
     /**
      *
      * @param loginDto
      * @param bindingResult
      * @return
      * @throws Exception
-     */
+     *//*
+
     @RequestMapping("/login")
     public ResponseEntity<Value> login(@Valid UserLoginParamDto loginDto, BindingResult bindingResult) throws Exception {
 
@@ -114,12 +116,14 @@ public class UpmsUserController {
     }
 
 
-    /**
+    */
+/**
      * 注册
      * @param username
      * @param password
      * @return
-     */
+     *//*
+
     @RequestMapping(value = "/registry", method = RequestMethod.POST)
     public ResponseEntity<Value> createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
         SysUsers user = new SysUsers();
@@ -135,20 +139,21 @@ public class UpmsUserController {
         }
         return ResponseEntity.ok(Value.getSuccess(user));
     }
+*/
 
     /**
      *
      * @param username  退出（未完成）
      * @return
      */
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/logout", method = RequestMethod.POST)
     public ResponseEntity<Value> logout(@RequestParam("username") String username, @RequestParam("password") String password) {
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
             logger.info("info:username:{} === password{}",username,password);
             upmsUserService.logintOut(username);
         }
         return ResponseEntity.ok(Value.getSuccess("成功退出登录"));
-    }
+    }*/
 
 
     /**

@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/dict")
 @Api(value = "dict", tags = "字典管理模块")
-public class DictController {
+public class UpmsDictController {
 
     private final UpmsDictItemService upmsDictItemService;
 

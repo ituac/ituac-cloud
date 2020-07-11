@@ -1,3 +1,4 @@
+/*
 package org.ituac.upms.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,3 +44,4 @@ public class JwtConfig {
         return converter;
     }
 }
+*/

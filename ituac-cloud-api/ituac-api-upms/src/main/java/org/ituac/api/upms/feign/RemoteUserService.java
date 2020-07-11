@@ -7,9 +7,7 @@ import org.ituac.common.kern.constant.SecurityConstants;
 import org.ituac.common.kern.constant.ServiceNameConstants;
 import org.ituac.common.kern.util.R;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author boo
@@ -24,7 +22,9 @@ public interface RemoteUserService {
      * @param from 调用标志
      * @return R
      */
-    @GetMapping("/user/info/{username}")
+    //@GetMapping("/user/info/{username}")
+
+    @RequestMapping(value="/user/info/{username}", method= RequestMethod.GET)
     R<UserInfo> info(@PathVariable("username") String username, @RequestHeader(SecurityConstants.FROM) String from);
 
     /**
@@ -32,7 +32,8 @@ public interface RemoteUserService {
      * @param inStr appid@code
      * @return
      */
-    @GetMapping("/social/info/{inStr}")
+    //@GetMapping("/social/info/{inStr}")
+    @RequestMapping(value="/social/info/{inStr}", method= RequestMethod.GET)
     R<UserInfo> social(@PathVariable("inStr") String inStr);
 
 }

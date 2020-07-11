@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.ituac.api.upms.feign.fallback.RemoteUserServiceFallbackImpl,\
+  org.ituac.api.upms.feign.fallback.RemoteLogServiceFallbackImpl,\
+  org.ituac.api.upms.feign.fallback.RemoteTokenServiceFallbackImpl,\
+  org.ituac.api.upms.feign.factory.RemoteUserServiceFallbackFactory,\
+  org.ituac.api.upms.feign.factory.RemoteLogServiceFallbackFactory,\
+  org.ituac.api.upms.feign.factory.RemoteTokenServiceFallbackFactory

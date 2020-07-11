@@ -23,6 +23,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.pig4cloud.shiro</groupId>
+            <artifactId>sso-sdk</artifactId>
+            <version>0.0.5</version>
+        </dependency>
     </dependencies>
 
 

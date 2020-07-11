@@ -1,7 +1,7 @@
 package org.ituac.common.kern.constant;
 
 /**
- * @author lengleng
+ * @author Boo
  * @date 2020
  */
 
@@ -20,7 +20,7 @@ public interface SecurityConstants {
     /**
      * 项目的license
      */
-    String PROJECT_LICENSE = "made by pig";
+    String PROJECT_LICENSE = "made by ituac";
 
     /**
      * 内部

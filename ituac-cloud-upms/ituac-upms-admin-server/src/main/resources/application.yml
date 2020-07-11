@@ -1,10 +1,70 @@
+
 security:
   oauth2:
-    resource:
-      user-info-uri: http://localhost:3001/users/current
     client:
-      id: client_2
-      client-secret: 123456
-      access-token-uri: http://localhost:3001/oauth/token
-      grant-type: client_credentials,password
+      client-id: ENC(imENTO7M8bLO38LFSIxnzw==)
+      client-secret: ENC(i3cDFhs26sa2Ucrfz2hnQw==)
       scope: server
+    resource:
+      token-info-uri: http://ituac-cloud-auth/oauth/check_token
+      # 通用放行URL，服务个性化，请在对应配置文件覆盖
+      ignore:
+        urls:
+          - /v2/api-docs
+          - /actuator/**
+
+
+# swagger 配置
+swagger:
+  title: xxx Swagger API
+  license: Powered By xxx
+  licenseUrl: https://xxx.com
+  terms-of-service-url: https://xxx.com
+  contact:
+    email: xxx@gmail.com
+    url: https://xxx.com
+  authorization:
+    name: Ituac OAuth
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: server all
+    token-url-list:
+      - http://ituac-upms-admin-server/auth/oauth/token
+
+
+mybatis-plus:
+  mapper-locations: classpath:org/ituac/*/mapper/impl/*.xml
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+# feign 配置
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

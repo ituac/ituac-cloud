@@ -5,11 +5,11 @@ public interface ServiceNameConstants {
     /**
      * 认证服务的SERVICEID
      */
-    String AUTH_SERVICE = "ituac-auth";
+    String AUTH_SERVICE = "ituac-cloud-auth";
 
     /**
      * UMPS模块
      */
-    String UMPS_SERVICE = "ituac-upms";
+    String UMPS_SERVICE = "ituac-upms-admin-server";
 
 }

@@ -53,6 +53,7 @@ public class ItuacUserDetailsServiceImpl implements UserDetailsService {
     @SneakyThrows
     public UserDetails loadUserByUsername(String username) {
         Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
+        //cache.clear();
         if (cache != null && cache.get(username) != null) {
             return (ItuacUser) cache.get(username).get();
         }

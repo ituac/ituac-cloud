@@ -17,7 +17,7 @@ public @interface EnableItuacFeignClients {
 
     String[] value() default {};
 
-    String[] basePackages() default { "com.pig4cloud.pig" };
+    String[] basePackages() default { "org.ituac" };
 
     Class<?>[] basePackageClasses() default {};
 

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.ituac.common.security.annotation.Inner;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -29,7 +30,8 @@ import java.util.regex.Pattern;
  */
 @Slf4j
 @Configuration
-@ConfigurationProperties(prefix = "security.oauth2.ignore")
+@ConditionalOnExpression("!'${security.oauth2.client.ignore-urls}'.isEmpty()")
+@ConfigurationProperties(prefix = "security.oauth2.client")
 public class PermitAllUrlProperties implements InitializingBean, ApplicationContextAware {
 
     private static final Pattern PATTERN = Pattern.compile("\\{(.*?)\\}");

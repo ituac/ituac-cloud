@@ -8,3 +8,34 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    request-context-attribute: request
+    freemarker.suffix: .html
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://127.0.0.1:3001/oauth/check_token
+      ignore:
+        urls:
+          - /v2/api-docs
+          - /actuator/**
+    client:
+      client-id: ituac_upms
+      client-secret: 123456
+      scope: server
+#    resource:
+#      loadBalanced: true
+#      token-info-uri: http://ituac-cloud-auth/oauth/check_token
+#      # 通用放行URL，服务个性化，请在对应配置文件覆盖
+#      ignore:
+#        urls:
+#          - /v2/api-docs
+#          - /actuator/**
