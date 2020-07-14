@@ -35,7 +35,7 @@ public class ItuacResourceServerAutoConfiguration {
         }));
 
         // 处理400 异常
-        restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
+        /*restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
             @Override
             @SneakyThrows
             public void handleError(ClientHttpResponse response) {
@@ -43,7 +43,7 @@ public class ItuacResourceServerAutoConfiguration {
                     super.handleError(response);
                 }
             }
-        });
+        });*/
         return restTemplate;
     }
 

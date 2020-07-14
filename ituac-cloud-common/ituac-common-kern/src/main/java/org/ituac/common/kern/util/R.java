@@ -41,7 +41,7 @@ public class R<T> implements Serializable {
     }
 
     public static <T> R<T> ok(T data, String msg) {
-        return restResult(data, CommonConstants.SUCCESS, msg);
+        return restResult(data,CommonConstants.SUCCESS, msg);
     }
 
     public static <T> R<T> failed() {

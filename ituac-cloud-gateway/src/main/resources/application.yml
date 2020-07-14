@@ -1,37 +1,39 @@
+spring:
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        # 认证中心
+        - id: ituac-cloud-auth
+          uri: lb://ituac-cloud-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeGatewayFilter
+            # 前端密码解密
+            - PasswordDecoderFilter
+        #UPMS 模块
+        - id: ituac-upms-admin-server
+          uri: lb://ituac-upms-admin-server
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
 
 
+security:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'thanks,ituacCloud'
 
-zuul:
-  host:
-    #zuul配置
-    max-per-route-connections: 50
-    max-total-connections: 200
-    connect-timeout-millis: 60000
-    socket-timeout-millis: 60000
-  #关闭重试机制
-  retryable: true
-  routes:
-    auth:
-      #说明: path不是微服务的地址而是自己定义的地址如果微服务地址为 /api/product 则此处访问地址为: /product/api/product
-      path: /uaa/**
-      sensitiveHeaders:
-      serviceId: ituac-cloud-auth
-      #strip-prefix: false
-    upms:
-      #说明: path不是微服务的地址而是自己定义的地址如果微服务地址为 /api/product 则此处访问地址为: /product/api/product
-      path: /upms/**
-      sensitiveHeaders:
-      serviceId: ituac-upms-admin-server
-      #strip-prefix: false
-
-    upms1:
-      #说明: path不是微服务的地址而是自己定义的地址如果微服务地址为 /api/product 则此处访问地址为: /product/api/product
-      path: /upms1/**
-      sensitiveHeaders:
-      serviceId: ituac-upms-admin-server
-      #strip-prefix: false
-
-  
-  include-debug-header: true
-  #添加代理头
-  add-proxy-headers: true
+# 不校验验证码终端
+ignore:
+  clients:
+    - test

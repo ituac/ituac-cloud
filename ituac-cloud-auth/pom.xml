@@ -18,7 +18,7 @@
     <version>1.0.1-SNAPSHOT</version>
     <url>https://ituac.com</url>
     <name>${project.artifactId}</name>
-    <description>api服务系统</description>
+    <description>认证服务</description>
 
     <dependencies>
         <!-- Spring Cloud Alibaba -->

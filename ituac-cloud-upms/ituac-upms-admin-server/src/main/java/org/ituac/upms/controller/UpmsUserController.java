@@ -47,9 +47,6 @@ public class UpmsUserController {
     @Autowired
     private UpmsUserService upmsUserService;
 
-    //@Autowired
-    //private UpmsUserMapper userRepository;
-
     @Autowired
     private OAuth2ClientProperties oAuth2ClientProperties;
 
@@ -64,98 +61,6 @@ public class UpmsUserController {
         return new RestTemplate();
     }
 
-
-    /**
-     *
-     * @param loginDto
-     * @param bindingResult
-     * @return
-     * @throws Exception
-     *//*
-
-    @RequestMapping("/login")
-    public ResponseEntity<Value> login(@Valid UserLoginParamDto loginDto, BindingResult bindingResult) throws Exception {
-
-        if (bindingResult.hasErrors())
-            throw new Exception("登录信息错误，请确认后再试");
-        SysUsers user = null;
-        //user = userRepository.findByUsername(loginDto.getUsername());
-
-        if (null == user)
-            throw new Exception("用户为空，出错了");
-
-        if (!BPwdEncoderUtil.matches(loginDto.getPassword(), user.getPassword().replace("{bcrypt}","")))
-            throw new Exception("密码不正确");
-
-        if (user.getUsername().equals("root_1")){
-            throw new Exception("用户已经锁定");
-        }
-
-        String client_secret = oAuth2ClientProperties.getClientId()+":"+oAuth2ClientProperties.getClientSecret();
-
-        client_secret = "Basic "+ Base64.getEncoder().encodeToString(client_secret.getBytes());
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Authorization",client_secret);
-
-        //授权请求信息
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.put("username", Collections.singletonList(loginDto.getUsername()));
-        map.put("password", Collections.singletonList(loginDto.getPassword()));
-        map.put("grant_type", Collections.singletonList(oAuth2ProtectedResourceDetails.getGrantType()));
-
-        map.put("scope", oAuth2ProtectedResourceDetails.getScope());
-
-        //登录成功 修改用户登录状态
-        upmsUserService.updateLoginStatusWithOnLine(user);
-
-        //HttpEntity
-        HttpEntity httpEntity = new HttpEntity(map,httpHeaders);
-        //获取 Token
-        return ResponseEntity.ok(Value.getSuccess(restTemplate.exchange(oAuth2ProtectedResourceDetails.getAccessTokenUri(), HttpMethod.POST,httpEntity,OAuth2AccessToken.class)));
-
-    }
-
-
-    */
-/**
-     * 注册
-     * @param username
-     * @param password
-     * @return
-     *//*
-
-    @RequestMapping(value = "/registry", method = RequestMethod.POST)
-    public ResponseEntity<Value> createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
-        SysUsers user = new SysUsers();
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
-            logger.info("info:username:{} === password{}",username,password);
-            SysUsers users = null;
-            //SysUsers users = userRepository.findByUsername(username);
-            if(users == null){
-                user = upmsUserService.create(username,password);
-            }else{
-                return ResponseEntity.ok(Value.getFailure("该用户已存在"));
-            }
-        }
-        return ResponseEntity.ok(Value.getSuccess(user));
-    }
-*/
-
-    /**
-     *
-     * @param username  退出（未完成）
-     * @return
-     */
-    /*@RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public ResponseEntity<Value> logout(@RequestParam("username") String username, @RequestParam("password") String password) {
-        if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
-            logger.info("info:username:{} === password{}",username,password);
-            upmsUserService.logintOut(username);
-        }
-        return ResponseEntity.ok(Value.getSuccess("成功退出登录"));
-    }*/
-
-
     /**
      * 获取当前用户全部信息
      * @return 用户信息
@@ -167,7 +72,7 @@ public class UpmsUserController {
         if (user == null) {
             return R.failed("获取当前用户信息失败");
         }
-        return R.ok(upmsUserService.getUserInfo(user));
+        return R.ok(upmsUserService.getUserInfo(user),"获取当前用户信息成功");
     }
 
     /**
