@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  */
 @Data
 @TableName("cms_posts")
-public class CmsPosts {
+public class Posts {
     private Integer type;
     private Integer id;
     private Timestamp create_time;

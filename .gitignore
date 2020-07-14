@@ -8,5 +8,4 @@
 target/        # 忽略 target/ 目录下的所有文件
 .DS_Store
 *.logs
-/.logs
-logs
+logs/

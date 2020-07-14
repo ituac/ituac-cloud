@@ -21,6 +21,10 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- 注册中心客户端 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -31,41 +35,19 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!-- sentinel-->
+
+
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.ituac.common</groupId>
+            <artifactId>ituac-common-swagger</artifactId>
         </dependency>
 
         <!-- service -->
         <dependency>
             <groupId>org.ituac.cms</groupId>
             <artifactId>ituac-cms-service</artifactId>
-            <version>1.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.ituac.cms</groupId>
-            <artifactId>ituac-cms-mapper</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
 

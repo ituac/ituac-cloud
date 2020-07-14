@@ -1,23 +1,18 @@
 package org.ituac.cms;
 
-//import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.ituac.common.security.annotation.EnableItuacFeignClients;
+import org.ituac.common.security.annotation.EnableItuacResourceServer;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.client.SpringCloudApplication;
 
 /**
- * @author ituac
+ * @author wp
  */
 
 
-@EnableDiscoveryClient
-//@EnableDubbo(scanBasePackages = "org.ituac.cms.service.impl")
-@EnableFeignClients("org.ituac.api")
-@ComponentScan(basePackages = {"org.ituac.*"})  //指定扫描包路径
-@SpringBootApplication
+@EnableItuacFeignClients
+@EnableItuacResourceServer
+@SpringCloudApplication
 public class  CmsApplication{
 
     public static void main(String[] args) {

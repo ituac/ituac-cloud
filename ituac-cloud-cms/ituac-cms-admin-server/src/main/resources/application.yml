@@ -1,39 +1,94 @@
-#server:
-#  port: 3000
-#
-#
+server:
+  port: 8093
+
 spring:
-#  redis:
-#    host: 122.51.39.181
-#    database: 0
-#  main:
-#    allow-bean-definition-overriding: true
-#    jackson:
-#      time-zone: GMT+8
-#      date-format: yyyy-MM-dd HH:mm:ss
-    datasource:
-#      type: com.zaxxer.hikari.HikariDataSource
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://122.51.39.181:3306/ituac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
-      username: root
-      password: 123456
-#      hikari:
-#        minimum-idle: 5
-#        idle-timeout: 600000
-#        maximum-pool-size: 10
-#        auto-commit: true
-#        pool-name: MyHikariCP
-#        max-lifetime: 1800000
-#        connection-timeout: 30000
-#        connection-test-query: SELECT 1
+  redis:
+    #host: 122.51.39.181
+    host: 127.0.0.1
+    database: 0
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://122.51.39.181:3306/ituac?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: 123456
+
 
 security:
+  #  basic:
+  #    enabled: false
   oauth2:
     resource:
-      user-info-uri: http://localhost:3001/users/current
+      token-info-uri: http://ituac-cloud-auth/oauth/check_token
+      ignore:
+        urls:
+          - /v2/api-docs
+          - /actuator/**
     client:
-      id: client_2
+      client-id: ituac_cms
       client-secret: 123456
-      access-token-uri: http://localhost:3001/oauth/token
-      grant-type: client_credentials,password
       scope: server
+
+
+# swagger 配置
+swagger:
+  title: CMS Swagger API
+  license: Powered By CMS
+  licenseUrl: https://cms.com
+  terms-of-service-url: https://cms.com
+  contact:
+    email: xxx@gmail.com
+    url: https://xxx.com
+  authorization:
+    name: Ituac OAuth
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: server all
+    token-url-list:
+      - http://localhost:3001/auth/oauth/token
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+# feign 配置
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+# mybaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
